@@ -1,30 +1,51 @@
 <template>
-  <div id="nav">
+  <!--div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  </!--div-->
+  <!--button type="button" @click="toggleApi">FullscreenApi</!--button>
+  <fullscreen--
+    v-if="fullscreen"
+    v-model="fullscreen"
+    teleport="true"
+    :page-only="pageOnly"
+  >
+    <div class="fullscreen-wrapper">
+      <Home />
+    </div>
+  </fullscreen-->
+  <router-view />
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import Home from "./views/Home.vue";
+export default {
+  data() {
+    return {
+      fullscreen: false,
+    };
+  },
+  mounted() {},
+  methods: {
+    toggleApi() {
+      this.$fullscreen.toggle();
+      this.fullscreen = true;
+    },
+  },
+  components: { Home },
+};
+</script>
+<style lang="scss" >
+.fullscreen-wrapper {
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  .button {
+    margin-bottom: 20px;
   }
 }
 </style>
